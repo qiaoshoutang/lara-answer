@@ -62,6 +62,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'wx_auth'  => \App\Http\Middleware\WxAuth::class,
         'user_auth'  => \App\Http\Middleware\UserAuth::class,
+        'admin_auth'  => \App\Http\Middleware\AdminAuth::class,
     ];
 
     /**

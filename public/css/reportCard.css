@@ -1,0 +1,77 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.box{
+    width:100%;
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+    background: url("../images/BgRed.png")no-repeat center;
+    background-size:100% 100%;
+    position: relative;
+    overflow: hidden;
+}
+@media screen and (min-height:750px){
+    .box{
+        background: url("../images/BgRed.png")no-repeat center;
+        background-size:100% 100%;
+        width: 100%;
+        min-width: 320px;
+        max-width: 640px;
+        margin: 0 auto;
+        position: fixed;
+        height: 100%;
+        overflow: hidden;
+    }
+}
+
+ul li{
+    list-style: none;
+}
+.dnaLogo,.DdDh{
+    width: 100%;
+    text-align: center;
+    position: relative;
+    top: -.1rem;
+}
+.dnaLogo img{
+    width: 50%;
+}
+.DdDh img{
+    width: 80%;
+    position: relative;
+    top: -.3rem;
+}
+.chengjidan{
+    width: 100%;
+    text-align: center;
+   margin-top: -.8rem;
+}
+.chengjidan img{
+    width: 95%;
+    ;
+}
+.BtnCjd{
+    width: 100%;
+}
+.BtnCjdUl{
+    width: 95%;
+    margin: 0 auto;
+    display: inline-block;
+    margin-left: 2.5%;
+}
+.BtnCjdUl li{
+    width: 33%;
+    text-align: center;
+    float: left;
+}
+.BtnCjdUl li img{
+    width: 80%;
+    position: relative;
+    top: -.4rem;
+    z-index: 99;
+}
