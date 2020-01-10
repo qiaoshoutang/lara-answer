@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// require  base_path().'/vendor/Intervention/Image/Image.php';
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

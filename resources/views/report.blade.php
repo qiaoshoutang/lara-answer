@@ -22,7 +22,7 @@
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
     </script>
-    <link rel="stylesheet" href="css/reportCard.css">
+    <link rel="stylesheet" href="/css/reportCard.css">
 
 </head>
 <style>
@@ -50,36 +50,56 @@
 <body>
     <div class="box">
         <div class="sharePage">
-            <img src="images/sharebtn.png" alt="">
+            <img src="/images/sharebtn.png" alt="">
         </div>
         <div class="ChenJiDD">
-            <img src="images/chengjidan.jpg" alt="">
+            <img src="/{{$poster}}" alt="">
         </div>
         <!--按钮-->
         <div class="BtnCjd">
             <ul class="BtnCjdUl">
                 <li class="again">
-                    <img src="images/again.png" alt="">
+                    <img src="/images/again.png" alt="">
                 </li>
                 <li>
-                    <img src="images/keepimg.png" alt="">
+                    <img src="/images/keepimg.png" alt="">
                 </li>
                 <li>
-                    <img src="images/Receiveawards.png" alt="">
+                    <img src="/images/Receiveawards.png" alt="" onclick='getReward()'>
                 </li>
             </ul>
         </div>
-
-
+        @csrf
     </div>
 </body>
-<script src="js/jquery.js"></script>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/layer/layer.js"></script>
 </html>
 <script>
+    var can_answer = {{$can_answer}}; 
+    var can_share  = {{$can_share}};
 
+    $(".again img").click(function () {
+        if(can_answer){
+            window.location.href="/home"
+        }else{
+            if(can_share){
+                $(".sharePage").show();
+                share();
+            }else{
+                layer.msg('您今天的机会已经用完了，明天加油！');
+            }
+            
+        }
+        
+    });
+    $(".sharePage").click(function () {
+        $(this).hide();
+    });
 
-
+    function getReward(){
+        window.location.href="/reward"
+    }
 
     /*分享出去的代码*/
     function share() {
@@ -88,22 +108,28 @@
         var onVisibilityChange = function(){
             if (!document[hiddenProperty]) {
                 console.log('页面非激活');
-                window.location.href="https://www.baidu.com/"
+                var token = $("input[name='_token']").val();
+                $.ajax({
+                  type:"post",
+                  url:"/ajax/share",
+                  data:{'_token':token,'share':true},
+                  dataType:'json',
+                  success:function(rdata){
+                    if(rdata.code==1){
+                        layer.msg(rdata.info,{time:2000},function(){
+                            window.location.href="/report/this"
+                        });
+                    }else{
+                        layer.msg(rdata.info);
+                    }
+                  }
+                });
+                return;
+                window.location.href="/home"
             }else{
                 console.log('页面激活');
             }
         };
         document.addEventListener(visibilityChangeEvent, onVisibilityChange);
     }
-
-
-    $(".again img").click(function () {
-        $(".sharePage").show();
-
-        share()
-    });
-    $(".sharePage").click(function () {
-        $(this).hide();
-    });
-
 </script>

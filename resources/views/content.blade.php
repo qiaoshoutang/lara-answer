@@ -106,7 +106,7 @@
             second = parseInt(second)-1;
         }else{
             clearInterval(time_index);
-            // answer_check('H',$('.textAnswerUl'));
+            answer_check('H',$('.textAnswerUl'));
         }
     }
 
@@ -125,7 +125,7 @@
     function answer_check(answer,obj){
         $.ajax({
           type:"post",
-          url:"/content/check",
+          url:"/ajax/check",
           data:{'page_id':page_id,'_token':token,'answer':answer},
           dataType:'json',
           success:function(rdata){

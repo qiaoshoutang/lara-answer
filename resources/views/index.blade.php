@@ -71,11 +71,18 @@
             <img src="images/btnBeigin.png" alt="" onclick='start()'>
         </div>
     </div>
-
 </body>
 <script src="js/jquery.js"></script>
+<script src="js/layer/layer.js"></script>
 </html>
 <script>
+    var error = {{count($errors)}};
+
+    if(error){
+        var str="{{$errors}}";
+        str = str.slice(8,-8);
+        layer.msg(str);
+    }
 
     $(".closebtn img").click(function () {
         $(".rulepage").hide();
@@ -87,7 +94,7 @@
         $(".rulepage").show()
     });
     $(".chengji img").click(function () {
-        $(".reportCard").show()
+        window.location.href = '/report/best';
     });
 
     function start(){

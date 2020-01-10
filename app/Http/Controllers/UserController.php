@@ -17,7 +17,7 @@ class UserController extends Controller
 
         $userInfoTemp = session('oauth_user');
 
-        $userInfo = DB::table('user')->where('openid',$userInfoTemp['openid'])->first(); //检索用户是否存在
+        $userInfo = DB::table('user')->where('openid',$userInfoTemp['openid'])->select(['id','openid','avatar','nickname'])->first(); //检索用户是否存在
 
         if($userInfo){  //用户登录
             
@@ -42,8 +42,8 @@ class UserController extends Controller
                 return redirect('/');
             }
             $sdata['id'] = $id;
-            $userInfo = $sdata;
-            
+            $userInfo =  DB::table('user')->where('id',$id)->first();
+            $userInfo = json_decode(json_encode($userInfo),true);
             session(['user_info'=>$userInfo]);
             if(!session('user_info')){ //登录失败
                 return redirect('/');
@@ -55,8 +55,9 @@ class UserController extends Controller
     }
     
     public function logout(Request $request){
-        $request->session()->forget('user_info');
-        var_dump(session('user_info'));
-        return ;
+//         $request->session()->forget('user_info');
+        $request->session()->flush();
+        
+        return '删除了所有session';
     }
 }

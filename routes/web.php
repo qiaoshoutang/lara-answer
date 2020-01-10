@@ -17,8 +17,11 @@ Route::get('/', function(){   //活动首页  登录失败页面
 Route::group(['middleware'=>'user_auth'],function(){ 
     Route::get('/home', 'IndexController@index');
     Route::get('/content/{subject}', 'IndexController@content');
-    Route::post('/content/check', 'IndexController@check');
-    Route::get('/report', 'IndexController@report');
+    Route::get('/report/{type}', 'IndexController@report');
+    Route::match(['get','post'],'/reward', 'IndexController@reward');
+    
+    Route::post('/ajax/check', 'AjaxController@check');  //验证答案
+    Route::post('/ajax/share', 'AjaxController@share');   //分享回调
     
 });
 
