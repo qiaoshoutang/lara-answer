@@ -46,11 +46,51 @@
     .ChenJiDD img{
         width: 100%;
     }
+    .keepImg{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 999;
+        background: rgba(0,0,0,.4);
+        text-align: center;
+        display: none;
+    }
+    .keepImg img{
+        width: 85%;
+        margin-top: 1.2rem;
+
+    }
+    .fontpage{
+        color: white;
+        font-size: .25rem;
+    }
+    .dachaA{
+        width: .5rem;
+        height: .5rem;
+        position: absolute;
+        top: -.6rem;
+        right: .4rem;
+    }
+    .dachaA img{
+        width: 100%;
+    }
 </style>
 <body>
     <div class="box">
         <div class="sharePage">
             <img src="/images/sharebtn.png" alt="">
+
+        </div>
+
+        <div class="keepImg">
+            <div class="dachaA">
+                <img src="/images/dacha.png" alt="">
+            </div>
+            <img src="/{{$poster}}" alt="">
+            <div class="fontpage">
+                长按图片可保存
+            </div>
+
         </div>
         <div class="ChenJiDD">
             <img src="/{{$poster}}" alt="">
@@ -61,7 +101,7 @@
                 <li class="again">
                     <img src="/images/again.png" alt="">
                 </li>
-                <li>
+                <li id="keepimg">
                     <img src="/images/keepimg.png" alt="">
                 </li>
                 <li>
@@ -96,6 +136,12 @@
     $(".sharePage").click(function () {
         $(this).hide();
     });
+    $(".dachaA").click(function () {
+        $(".keepImg").hide()
+    });
+    $("#keepimg").click(function () {
+        $(".keepImg").show()
+    })
 
     function getReward(){
         window.location.href="/reward"
