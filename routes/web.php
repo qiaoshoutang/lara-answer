@@ -26,11 +26,15 @@ Route::group(['middleware'=>'user_auth'],function(){
 });
 
 Route::group(['middleware'=>'admin_auth'],function(){
-    Route::get('/admin/home', 'AdminController@index');
-    Route::match(['get','post'],'/admin/content', 'AdminController@content');
-    Route::get('/admin/edit/{id}', 'AdminController@edit');
-    Route::post('/admin/edit', 'AdminController@edit');
-    Route::post('/admin/del', 'AdminController@del');
+    Route::get('/admin/home', 'AdminController@index');                                    //后台首页
+    Route::get('/admin/subject', 'AdminController@subjectList');                           //题库列表
+    Route::get('/admin/result', 'AdminController@resultList');                             //成绩列表
+    Route::match(['get','post'],'/admin/content', 'AdminController@content');              //新增题目
+    Route::get('/admin/edit/{id}', 'AdminController@edit');                                //修改题目
+    Route::post('/admin/edit', 'AdminController@edit');                                    //修改题目
+    Route::post('/admin/del', 'AdminController@del');                                      //删除题目
+    Route::post('/admin/user/chance', 'AdminController@userChance');                       //再一次答题机会
+    Route::post('/admin/user/del', 'AdminController@userDel');                             //删除用户
 });
 Route::get('/logout', 'UserController@logout');
     
