@@ -60,7 +60,7 @@
         <!--狮子logo-->
         <div class="logoCenter">
             <img src="images/logoCenter.png" alt="">
-            <p>答题测试你的区块链投资段位</p>
+            <p>新年答题，一起瓜分百万元界DNA</p>
         </div>
         <!--答题规则-->
         <div class="AnswerRule">
