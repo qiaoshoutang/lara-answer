@@ -35,6 +35,26 @@
          background:#3c7f25!important;
          color: white;
     }
+    .textAnswerUl li{
+        position: relative;
+    }
+    .ifok{
+       width: 20%;
+        height: 100%;
+        position: absolute;
+        right: -.7rem;
+        top: 0.15rem;
+    }
+    .ifok img{
+         margin-left: .2rem;
+    }
+    .reddui,.greencuo{
+        display: none;
+    }
+    .showanwer{
+        display: block!important;
+    }
+
 </style>
 <body>
      <div class="box">
@@ -66,15 +86,31 @@
                      <ul class="textAnswerUl">
                          <li onclick="choose(this)" data='A'>
                              A、{{$subjectInfo->option_a}}
+                             <div class="ifok">
+                                 <img src="/images/dui.png" alt="" class="reddui">
+                                 <img src="/images/cuo.png" alt="" class="greencuo">
+                             </div>
                          </li>
                          <li onclick="choose(this)" data='B'>
                              B、{{$subjectInfo->option_b}}
+                             <div class="ifok">
+                                 <img src="/images/dui.png" alt="" class="reddui">
+                                 <img src="/images/cuo.png" alt="" class="greencuo">
+                             </div>
                          </li>
                          <li onclick="choose(this)" data='C'>
                              C、{{$subjectInfo->option_c}}
+                             <div class="ifok">
+                                 <img src="/images/dui.png" alt="" class="reddui">
+                                 <img src="/images/cuo.png" alt="" class="greencuo">
+                             </div>
                          </li>
                          <li onclick="choose(this)" data='D'>
                              D、{{$subjectInfo->option_d}}
+                             <div class="ifok">
+                                 <img src="/images/dui.png" alt="" class="reddui">
+                                 <img src="/images/cuo.png" alt="" class="greencuo">
+                             </div>
                          </li>
                      </ul>
                  </div>
@@ -132,12 +168,15 @@
             if(rdata.code==1){  //回答正确
       
                 obj.find('li[data="'+rdata.right+'"]').addClass('redbgNew');
+                obj.find('li[data="'+rdata.right+'"]').find($(".reddui")).addClass('showanwer');
                 setTimeout(function(){
                     window.location.href = rdata.data;
                 },1000);
             }else if(rdata.code==2){  //回答错误
                 obj.find('li[data="'+rdata.right+'"]').addClass('redbgNew');
+                obj.find('li[data="'+rdata.right+'"]').find($(".reddui")).addClass('showanwer');
                 obj.find('li[data="'+answer+'"]').addClass('green');
+                obj.find('li[data="'+answer+'"]').find($(".greencuo")).addClass('showanwer');
                 setTimeout(function(){
                     window.location.href = rdata.data;
                 },1000);
