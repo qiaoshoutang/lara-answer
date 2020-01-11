@@ -142,10 +142,14 @@ class IndexController extends Controller
             }
             unset($data['_token']);
 
+            $sdata['wechat'] = htmlspecialchars($data['wechat']);
+            $sdata['r_account'] = htmlspecialchars($data['r_account']);
+            $sdata['r_uid'] = htmlspecialchars($data['r_uid']);
+
             $userInfo = session('user_info');
             
             $userMod = new User();
-            $res = $userMod->where('id',session('user_info.id'))->update($data);
+            $res = $userMod->where('id',session('user_info.id'))->update($sdata);
             
             if($res){
                 $rdata['code'] = 1;
@@ -158,6 +162,9 @@ class IndexController extends Controller
             }
         }
         $userInfo = User::where('id',session('user_info.id'))->select(['wechat','r_account','r_uid'])->first();
+        $userInfo->wechat = htmlspecialchars_decode($userInfo->wechat);
+        $userInfo->r_account = htmlspecialchars_decode($userInfo->r_account);
+        $userInfo->r_uid = htmlspecialchars_decode($userInfo->r_uid);
 
         return view('reward',['userInfo'=>$userInfo]);
     }

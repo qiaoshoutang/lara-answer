@@ -23,8 +23,6 @@
         })(document, window);
     </script>
     <link rel="stylesheet" href="css/rewardPage.css">
-
-
 </head>
 <body>
     <div class="box">
@@ -53,7 +51,6 @@
             </div>
             @csrf
         </form>
-
     </div>
 </body>
 <script src="js/jquery.js"></script>
@@ -80,24 +77,26 @@
         if(r_uid==''||r_uid=='null'){
             layer.msg("R网UID不能为空");
             return false
-        }else {
-
-            $.ajax({
-              type:"post",
-              url:"/reward",
-              data:$("form").serialize(),
-              dataType:'json',
-              success:function(rdata){
-                if(rdata.code==1){
-                    layer.msg(rdata.info,{time:2000},function(){
-                        window.location.href="/report/this"
-                    });
-                }else{
-                    layer.msg(rdata.info);
-                }
-              }
-            });
         }
-    })
+        if(isNaN(r_uid)){
+            layer.msg("R网UID只能为数字");
+            return false
+        }
 
+        $.ajax({
+          type:"post",
+          url:"/reward",
+          data:$("form").serialize(),
+          dataType:'json',
+          success:function(rdata){
+            if(rdata.code==1){
+                layer.msg(rdata.info,{time:2000},function(){
+                    window.location.href="/report/this"
+                });
+            }else{
+                layer.msg(rdata.info);
+            }
+          }
+        });
+    })
 </script>
