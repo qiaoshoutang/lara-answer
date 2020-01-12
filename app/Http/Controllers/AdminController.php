@@ -32,7 +32,7 @@ class AdminController extends Controller
 
         if($request->method() == 'POST'){ //数据提交
             
-            $data = $request->all();
+            $data = $request->only(['title','option_a','option_b','option_c','option_d','right']);
 
             if(empty($data['title'])||empty($data['option_a'])||empty($data['option_b'])||empty($data['option_c'])||empty($data['option_d'])||empty($data['right'])){
                 $rdata['code'] = 0;
@@ -63,7 +63,7 @@ class AdminController extends Controller
 
         if($request->method() == 'POST'){ //数据提交
             
-            $data = $request->all();
+            $data = $request->only(['id','title','option_a','option_b','option_c','option_d','right']);
 
             if(empty($data['title'])||empty($data['option_a'])||empty($data['option_b'])||empty($data['option_c'])||empty($data['option_d'])||empty($data['right'])){
                 $rdata['code'] = 0;

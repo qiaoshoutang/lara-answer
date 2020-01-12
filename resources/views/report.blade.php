@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>成绩单</title>
+    <title>登顶大赛成绩单</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <script>
         (function (doc, win) {
@@ -163,17 +163,13 @@
                   success:function(rdata){
                     if(rdata.code==1){
                         layer.msg(rdata.info,{time:2000},function(){
-                            window.location.href="/report/this"
+                            window.location.href="/home"
                         });
                     }else{
                         layer.msg(rdata.info);
                     }
                   }
                 });
-                return;
-                window.location.href="/home"
-            }else{
-                console.log('页面激活');
             }
         };
         document.addEventListener(visibilityChangeEvent, onVisibilityChange);

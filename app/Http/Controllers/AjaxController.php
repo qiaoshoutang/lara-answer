@@ -18,11 +18,26 @@ class AjaxController extends Controller
         if(($page_id<1) || ($page_id>15)){
             return '页面参数有误';
         }
+        $answer = session('answer');
+        if(isset($answer[$page_id])){  //该题已答过  跳往下一题
+            if($page_id == 15){
+                $next_url = '/report/this';
+            }else{
+                $next_url = '/content/'.($page_id+1);
+            }
+            $rdata['code'] = 3;
+            $rdata['info'] = '您已经回答过该题！';
+            $rdata['data'] = $next_url;
+
+            return $rdata;
+        }
+        
         if($page_id == 15){
             $next_url = '/report/this';
         }else{
             $next_url = '/content/'.($page_id+1);
         }
+
         $subject_arr = json_decode(session('subject'),true);
         $subject_id = $subject_arr[$page_id-1];
         
@@ -30,7 +45,7 @@ class AjaxController extends Controller
             return '找不到题目';
         }
         //更新答案到session
-        $answer = session('answer');
+
         $answer[$page_id] = $data['answer'];
         session(['answer'=>$answer]);
         

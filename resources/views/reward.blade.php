@@ -42,7 +42,7 @@
                     <input type="text" placeholder="R网账号" name="r_account" value='{{$userInfo->r_account}}'>
                 </div>
                 <div class="RId">
-                    <input type="text" placeholder="R网UID" name="r_uid" value='{{$userInfo->r_uid}}'>
+                    <input type="text" placeholder="R网UID" name="r_uid" value='@if($userInfo->r_uid) $userInfo->r_uid; @endif'>
                 </div>
                 <div class="sbmitBtn">
                     <img src="images/sbmitBtn.png" alt="" id="sbmitBtn">

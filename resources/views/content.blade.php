@@ -180,6 +180,8 @@
                 setTimeout(function(){
                     window.location.href = rdata.data;
                 },1000);
+            }else if(rdata.code==3){  //重复答题
+                window.location.href = rdata.data;
             }else{
                 layer.msg(rdata.info);
                 selected = false;

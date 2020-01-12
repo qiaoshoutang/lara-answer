@@ -21,6 +21,10 @@ class WxAuth
             $userInfo = array('openid'=>'aaaaa','nickname'=>'翘首','headimgurl'=>'http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJtxfkusaicfaFaPfspIxyPvA1TeSzHiahAr6eGrmVN5oKH8oB3x65su1sMTtk9MicFLIQiaTdlWOsBWg/132');
             session(['oauth_user' => $userInfo]);
         }
+        if(!is_weixin()){
+            echo '请在微信内打开';
+            exit;
+        }
         if (!session('oauth_user')) {
             
             if ($request->has('state') && $request->has('code')) {

@@ -121,7 +121,7 @@ $('#btn_submit').click(function(){
 });
 
 $('#btn_back').click(function(){
-     window.location.href = '/admin/home';
+     window.location.href = '/admin/subject';
 });
 </script>
 </html>

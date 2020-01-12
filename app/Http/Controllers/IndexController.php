@@ -26,16 +26,10 @@ class IndexController extends Controller
         if(($page_id<1) || ($page_id>15)){
             return '页面参数有误';
         }
-        $answer = session('answer');
 
-        if(isset($answer[$page_id])){  //该题已答过  跳往下一题
-            if($page_id == 15){
-                $next_url = '/report/this';
-            }else{
-                $next_url = '/content/'.($page_id+1);
-            }
-            return redirect($next_url);
-        }
+
+//         dd(isset($answer[$page_id]));
+
         if($page_id == 1){ //开始答题   进行数据处理
             
             $userMod = new User();
@@ -65,7 +59,16 @@ class IndexController extends Controller
             }
 
         }
-//                     dd(session('answer'));
+        $answer = session('answer');
+        if(isset($answer[$page_id])){  //该题已答过  跳往下一题
+            if($page_id == 15){
+                $next_url = '/report/this';
+            }else{
+                $next_url = '/content/'.($page_id+1);
+            }
+            return redirect($next_url);
+        }
+
         $subject_arr = json_decode(session('subject'),true);
         $subject_id = $subject_arr[$page_id-1];
         
@@ -84,6 +87,7 @@ class IndexController extends Controller
     //报告页
     public function report(Request $request){
 
+//         dd(session('answer'));
         $type = $request->type;
         if(empty($type)){
             return '参数错误';

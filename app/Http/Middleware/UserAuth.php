@@ -16,6 +16,10 @@ class UserAuth
     public function handle($request, Closure $next)
     {
 //         dd(session('user_info'),'gg33g');
+        if(!is_weixin()){
+            echo '请在微信内打开';
+            exit;
+        }
         if(session('user_info')){
             return $next($request);
         }else{
