@@ -88,6 +88,10 @@ class IndexController extends Controller
     public function report(Request $request){
 
 //         dd(session('answer'));
+        $data = $request->all();
+        if(isset($data['from'])){
+            return redirect('/home');
+        }
         $type = $request->type;
         if(empty($type)){
             return '参数错误';
@@ -128,8 +132,13 @@ class IndexController extends Controller
         }else{
             $can_share = 1;
         }
-//         dd($can_answer,$can_share);
-        return view('report',['poster'=>$poster,'can_answer'=>$can_answer,'can_share'=>$can_share]);
+
+        $signaturn = get_wx_signature();
+        if(empty($signaturn)){
+            return '获取微信签名失败';
+        }
+//         dd($signaturn);
+        return view('report',['poster'=>$poster,'can_answer'=>$can_answer,'can_share'=>$can_share,'signaturn'=>$signaturn]);
 
     }
      
@@ -196,7 +205,7 @@ class IndexController extends Controller
             $rewardInfo = $rewardArr['1'];
         }
 
-        $targetUrl = 'poster/'.$userInfo->id.'_'.$score.'.png';
+        $targetUrl = 'poster/'.$userInfo->id.'_'.$score.'.jpg';
 
         $img = Image::make('images/mould.jpg');
         $img ->insert($userInfo->avatar,'top-left',156,484);                   //合成头像

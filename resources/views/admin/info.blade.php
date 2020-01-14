@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>运营后台</title>
+    <title>题目修改</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <style>

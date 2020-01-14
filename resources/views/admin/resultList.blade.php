@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>后台题库</title>
+    <title>成绩列表</title>
 </head>
 <style>
     *{
