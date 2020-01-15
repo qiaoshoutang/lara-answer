@@ -14,7 +14,12 @@ class IndexController extends Controller
     {
 
 
-        return view('index');
+        $signaturn = get_wx_signature();
+        if(empty($signaturn)){
+            return '获取微信签名失败';
+        }
+        
+        return view('index',['signaturn'=>$signaturn]);
     }
     
     //答题界面
