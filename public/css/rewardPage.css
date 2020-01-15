@@ -25,7 +25,7 @@ ul li{
     width: 100%;
     text-align: center;
     position: relative;
-    top: -.3rem;
+    top: -.1rem;
 }
 .dnaLogo img{
     width: 45%;
@@ -70,6 +70,9 @@ ul li{
     color: #ffc77d;
     font-size: .2rem;
     letter-spacing: 1px;
+    width: 90%;
+    margin: 0.1rem auto;
+    text-align: left;
 }
 
 @media screen and (min-height:750px){

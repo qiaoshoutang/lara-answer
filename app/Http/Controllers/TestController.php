@@ -17,22 +17,23 @@ class TestController extends Controller
      */
     public function index(Request $request)
     {
-        $str = 'fohh阶级固化然后hhho';
 
-        $img = Image::make('avatar/mould.jpg');
-        $img ->insert('avatar/202001/1578040207_3474.png','bottom-right',150,10);
-
-        $img->text($str, 300, 250, function($font) {
-            $font->file(base_path().'/public/font/msyh.ttf');
-            $font->size(140);
-            $font->color('#000');
-            $font->align('center');
-            $font->valign('top');
-        });
-        $img->save('avatar/aaa.png');
-//         session(['user_3'=>111]);
-//         dump($img);
+//         dd(config('app.APPID'),config('app.APPSECRET'));
+//         cache(['a'=>'aa'],10);
+//         $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.config('app.APPID').'&secret='.config('app.APPSECRET');
+// //         dd($url);
+//         $res = $this->curl_get($url);
+//         dd(json_decode($res,true));
+        $signaturn = get_wx_signature();
+        dd($signaturn);
         return '按个';
+        
+        
+    }
+    public function test(Request $request)
+    {
+        dd(cache('a'));
+
         
         
     }

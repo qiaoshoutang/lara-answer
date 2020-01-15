@@ -44,4 +44,10 @@ Route::get('/admin/logout', 'AdminController@logout');  //后台登录
 
 
 Route::get('/index/{name?}','IndexController@index');
-Route::resource('test','TestController');
+// Route::resource('test','TestController');
+Route::get('/test', 'TestController@index');     
+Route::get('/test2', 'TestController@test');     
+
+
+
+
