@@ -116,67 +116,6 @@
 <script src="/js/layer/layer.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 </html>
-<script>
-    var page_id = '{{$page_id}}';
-    var token = $('input[name="_token"]').val();
-    var selected = false;
-    var second =15;
-    var time_index;
-    countDown();
-    time_index = setInterval("setTime()",1000);
-    function setTime(){
-        if(second >0){
-            second = parseInt(second)-1;
-        }else{
-            clearInterval(time_index);
-            answer_check('H',$('.textAnswerUl'));
-        }
-    }
-
-    function choose(para){
-        if(selected == true){
-            return false;
-        }
-        selected = true;
-
-        var answer = $(para).attr('data');
-        var obj = $(para).parent('ul');
-
-        answer_check(answer,obj);
-
-    }
-    function answer_check(answer,obj){
-        $.ajax({
-            type:"post",
-            url:"/ajax/check",
-            data:{'page_id':page_id,'_token':token,'answer':answer},
-            dataType:'json',
-            success:function(rdata){
-                if(rdata.code==1){  //回答正确
-
-                    obj.find('li[data="'+rdata.right+'"]').addClass('redbgNew');
-                    obj.find('li[data="'+rdata.right+'"]').find($(".reddui")).addClass('showanwer');
-                    setTimeout(function(){
-                        window.location.href = rdata.data;
-                    },1000);
-                }else if(rdata.code==2){  //回答错误
-                    obj.find('li[data="'+rdata.right+'"]').addClass('redbgNew');
-                    obj.find('li[data="'+rdata.right+'"]').find($(".reddui")).addClass('showanwer');
-                    obj.find('li[data="'+answer+'"]').addClass('green');
-                    obj.find('li[data="'+answer+'"]').find($(".greencuo")).addClass('showanwer');
-                    setTimeout(function(){
-                        window.location.href = rdata.data;
-                    },1000);
-                }else if(rdata.code==3){  //重复答题
-                    window.location.href = rdata.data;
-                }else{
-                    layer.msg(rdata.info);
-                    selected = false;
-                }
-            }
-        });
-    }
-</script>
 
 <script>
     var can_answer = {{$can_answer}}; 
@@ -191,28 +130,28 @@
       signature: "{{$signaturn['signature']}}",// 必填，签名
       jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表
     });
-wx.ready(function (){
-    share();
-    wx.onMenuShareTimeline({
-      title: '新年答题瓜分百万元界DNA', // 分享标题
-      link: 'http://hd.lpchain.net/home', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-      imgUrl: 'http://hd.lpchain.net/images/share.jpg', // 分享图标
-      success: function () {
-      // 用户点击了分享后执行的回调函数
-      }
+    wx.ready(function (){
+        share();
+        wx.onMenuShareTimeline({
+          title: '新年答题瓜分百万元界DNA', // 分享标题
+          link: 'http://hd.lpchain.net/home', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+          imgUrl: 'http://hd.lpchain.net/images/share.jpg', // 分享图标
+          success: function () {
+          // 用户点击了分享后执行的回调函数
+          }
+        });
+        wx.onMenuShareAppMessage({
+          title: '新年答题瓜分百万元界DNA', // 分享标题
+          desc: '参与元界DNA新春登顶大会，答题赢取DNA奖励', // 分享描述
+          link: 'http://hd.lpchain.net/home', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+          imgUrl: 'http://hd.lpchain.net/images/share.jpg', // 分享图标
+          type: 'link', // 分享类型,music、video或link，不填默认为link
+          dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+          success: function () {
+            // 用户点击了分享后执行的回调函数
+          }
+        });
     });
-    wx.onMenuShareAppMessage({
-      title: '新年答题瓜分百万元界DNA', // 分享标题
-      desc: '参与元界DNA新春登顶大会，答题赢取DNA奖励', // 分享描述
-      link: 'http://hd.lpchain.net/home', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-      imgUrl: 'http://hd.lpchain.net/images/share.jpg', // 分享图标
-      type: 'link', // 分享类型,music、video或link，不填默认为link
-      dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-      success: function () {
-        // 用户点击了分享后执行的回调函数
-      }
-    });
-});
 
 
     $(".again img").click(function () {
@@ -221,7 +160,6 @@ wx.ready(function (){
         }else{
             if(can_share){
                 $(".sharePage").show();
-                
             }else{
                 layer.msg('您今天的机会已经用完了，明天加油！');
             }

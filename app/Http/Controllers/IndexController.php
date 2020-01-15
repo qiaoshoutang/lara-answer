@@ -42,7 +42,8 @@ class IndexController extends Controller
             if(empty($userInfo)){
                 return redirect('/');
             }
-            if(date('Y-m-d',$userInfo['last_time']) == date('Y-m-d')){          //今天已经答题
+
+            if($userInfo['last_time'] == 0){          //今天已经答题
                 if(date('Y-m-d',$userInfo['share_time']) == date('Y-m-d')){     //今天已经分享
                     return back()->withErrors('您今天的机会已经用完，明天再来挑战吧!');
                 }else{
@@ -58,7 +59,7 @@ class IndexController extends Controller
             }
             
             session(['subject'=>json_encode($subject_arr),'score'=>0,'answer'=>[]]);
-            $res = $userMod->where('id',session('user_info.id'))->update(['last_time'=>time()]);
+            $res = $userMod->where('id',session('user_info.id'))->decrement('last_time');
             if(empty($res)){
                 return back()->withErrors('修改信息失败！');
             }
@@ -127,7 +128,7 @@ class IndexController extends Controller
                 }
             }
         }
-        if(date('Y-m-d',$userInfo->last_time) == date('Y-m-d')){  //今天已经答题
+        if($userInfo->last_time == 0 ){  //今天已经没有剩余次数了
             $can_answer = 0;
         }else{
             $can_answer = 1;
