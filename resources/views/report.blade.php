@@ -117,6 +117,68 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 </html>
 <script>
+    var page_id = '{{$page_id}}';
+    var token = $('input[name="_token"]').val();
+    var selected = false;
+    var second =15;
+    var time_index;
+    countDown();
+    time_index = setInterval("setTime()",1000);
+    function setTime(){
+        if(second >0){
+            second = parseInt(second)-1;
+        }else{
+            clearInterval(time_index);
+            answer_check('H',$('.textAnswerUl'));
+        }
+    }
+
+    function choose(para){
+        if(selected == true){
+            return false;
+        }
+        selected = true;
+
+        var answer = $(para).attr('data');
+        var obj = $(para).parent('ul');
+
+        answer_check(answer,obj);
+
+    }
+    function answer_check(answer,obj){
+        $.ajax({
+            type:"post",
+            url:"/ajax/check",
+            data:{'page_id':page_id,'_token':token,'answer':answer},
+            dataType:'json',
+            success:function(rdata){
+                if(rdata.code==1){  //回答正确
+
+                    obj.find('li[data="'+rdata.right+'"]').addClass('redbgNew');
+                    obj.find('li[data="'+rdata.right+'"]').find($(".reddui")).addClass('showanwer');
+                    setTimeout(function(){
+                        window.location.href = rdata.data;
+                    },1000);
+                }else if(rdata.code==2){  //回答错误
+                    obj.find('li[data="'+rdata.right+'"]').addClass('redbgNew');
+                    obj.find('li[data="'+rdata.right+'"]').find($(".reddui")).addClass('showanwer');
+                    obj.find('li[data="'+answer+'"]').addClass('green');
+                    obj.find('li[data="'+answer+'"]').find($(".greencuo")).addClass('showanwer');
+                    setTimeout(function(){
+                        window.location.href = rdata.data;
+                    },1000);
+                }else if(rdata.code==3){  //重复答题
+                    window.location.href = rdata.data;
+                }else{
+                    layer.msg(rdata.info);
+                    selected = false;
+                }
+            }
+        });
+    }
+</script>
+
+<script>
     var can_answer = {{$can_answer}}; 
     var can_share  = {{$can_share}};
 
