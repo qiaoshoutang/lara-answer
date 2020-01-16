@@ -14,7 +14,12 @@ class IndexController extends Controller
     {
 
 
-        return view('index');
+        $signaturn = get_wx_signature();
+        if(empty($signaturn)){
+            return '获取微信签名失败';
+        }
+        
+        return view('index',['signaturn'=>$signaturn]);
     }
     
     //答题界面
@@ -37,7 +42,8 @@ class IndexController extends Controller
             if(empty($userInfo)){
                 return redirect('/');
             }
-            if(date('Y-m-d',$userInfo['last_time']) == date('Y-m-d')){          //今天已经答题
+
+            if($userInfo['last_time'] == 0){          //今天已经答题
                 if(date('Y-m-d',$userInfo['share_time']) == date('Y-m-d')){     //今天已经分享
                     return back()->withErrors('您今天的机会已经用完，明天再来挑战吧!');
                 }else{
@@ -53,7 +59,7 @@ class IndexController extends Controller
             }
             
             session(['subject'=>json_encode($subject_arr),'score'=>0,'answer'=>[]]);
-            $res = $userMod->where('id',session('user_info.id'))->update(['last_time'=>time()]);
+            $res = $userMod->where('id',session('user_info.id'))->decrement('last_time');
             if(empty($res)){
                 return back()->withErrors('修改信息失败！');
             }
@@ -116,13 +122,28 @@ class IndexController extends Controller
             }
             
             if((empty($userInfo->poster))||($score>$userInfo->best)){
-                $res = $userMod->where('id',$userInfo['id'])->update(['best'=>$score,'poster'=>$poster]);
+                $rewardDNA =['1'=>0,'2'=>18,'3'=>58,'4'=>128,'5'=>268,'6'=>688];
+                if(($score>=1)&&($score<=5)){
+                    $num_dna = $rewardDNA['2'];
+                }elseif(($score>=6)&&($score<=9)){
+                    $num_dna = $rewardDNA['3'];
+                }elseif(($score>=10)&&($score<=12)){
+                    $num_dna = $rewardDNA['4'];
+                }elseif(($score>=13)&&($score<=14)){
+                    $num_dna = $rewardDNA['5'];
+                }elseif($score==15){
+                    $num_dna = $rewardDNA['6'];
+                }else{
+                    $num_dna = $rewardDNA['1'];
+                }
+                
+                $res = $userMod->where('id',$userInfo['id'])->update(['best'=>$score,'poster'=>$poster,'tel'=>$num_dna]);
                 if(empty($res)){
                     return '更新信息失败';
                 }
             }
         }
-        if(date('Y-m-d',$userInfo->last_time) == date('Y-m-d')){  //今天已经答题
+        if($userInfo->last_time == 0 ){  //今天已经没有剩余次数了
             $can_answer = 0;
         }else{
             $can_answer = 1;
@@ -185,11 +206,11 @@ class IndexController extends Controller
     private function makePoster($score=0,$userInfo){
         $rewardArr =[
             '1'=>['grade'=>'images/D-.png','prize'=>'0 DNA','word'=>['天呐，你对区块链一无所知，好好学习，别','被时代的洪流甩下啊！现在的你还不适合接','触区块链投资，继续学习吧！']],
-            '2'=>['grade'=>'images/D.png','prize'=>'10 DNA','word'=>['你对区块链所知甚少，好好学习，别被时代','的洪流甩下啊！无论何时开始学习都不晚，','知识越丰富，收获越多，继续修炼吧！']],
-            '3'=>['grade'=>'images/C.png','prize'=>'50 DNA','word'=>['你比萌新多了一些成熟，但还缺乏历练，仍','须仔细甄别区块链炒作乱象，避免被忽悠~','学海无涯，可以在区块链的海洋中继续漂泊~']],
-            '4'=>['grade'=>'images/B.png','prize'=>'100 DNA','word'=>['你是个小小的区块链百晓生，保持这种学习','劲头，假以时日必然更进一步！学海无涯，','别太快上岸，财运早晚会眷顾你！']],
-            '5'=>['grade'=>'images/A.png','prize'=>'300 DNA','word'=>['你是区块链百事通，相信你会成为一个优秀','的布道者！无论是学习还是生活，付出总会','收获回报！']],
-            '6'=>['grade'=>'images/A+.png','prize'=>'500 DNA','word'=>['区块链百晓生就是你了吧！请不要吝啬你的','智慧，多为别人答疑解惑！继续学习，会有','更多的回报！坚定信仰，下一个扑克牌大佬','可能就是你！']]
+            '2'=>['grade'=>'images/D.png','prize'=>'18 DNA','word'=>['你对区块链所知甚少，好好学习，别被时代','的洪流甩下啊！无论何时开始学习都不晚，','知识越丰富，收获越多，继续修炼吧！']],
+            '3'=>['grade'=>'images/C.png','prize'=>'58 DNA','word'=>['你比萌新多了一些成熟，但还缺乏历练，仍','须仔细甄别区块链炒作乱象，避免被忽悠~','学海无涯，可以在区块链的海洋中继续漂泊~']],
+            '4'=>['grade'=>'images/B.png','prize'=>'128 DNA','word'=>['你是个小小的区块链百晓生，保持这种学习','劲头，假以时日必然更进一步！学海无涯，','别太快上岸，财运早晚会眷顾你！']],
+            '5'=>['grade'=>'images/A.png','prize'=>'268 DNA','word'=>['你是区块链百事通，相信你会成为一个优秀','的布道者！无论是学习还是生活，付出总会','收获回报！']],
+            '6'=>['grade'=>'images/A+.png','prize'=>'688 DNA','word'=>['区块链百晓生就是你了吧！请不要吝啬你的','智慧，多为别人答疑解惑！继续学习，会有','更多的回报！坚定信仰，下一个扑克牌大佬','可能就是你！']]
         ];
         if(($score>=1)&&($score<=5)){
             $rewardInfo = $rewardArr['2'];

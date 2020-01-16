@@ -14,6 +14,8 @@ Route::get('/', function(){   //活动首页  登录失败页面
     return view('logout');
 });
 
+Route::get('/time/newday', 'TimeController@newDay');
+    
 Route::group(['middleware'=>'user_auth'],function(){ 
     Route::get('/home', 'IndexController@index');
     Route::get('/content/{subject}', 'IndexController@content');

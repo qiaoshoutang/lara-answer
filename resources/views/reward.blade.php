@@ -68,6 +68,7 @@
 
 
 
+
     $("#sbmitBtn").click(function () {
         var wechat=$("input[name='wechat']").val();
         var r_account=$("input[name='r_account']").val();

@@ -75,14 +75,14 @@ class AjaxController extends Controller
             $userMod = new User();
             $userInfo = $userMod->where('id',session('user_info.id'))->first();
             
-            if(date('Y-m-d',$userInfo->share) == date('Y-d-d')){ //最新分享时间不是今天
+            if(date('Y-m-d',$userInfo->share_time) == date('Y-m-d')){ //最新分享时间不是今天
                 $rdata['code'] = 2;
                 $rdata['info'] = '您今天已经分享过了~';
                 return $rdata;
             }else{
 
                 $sdata['share_time'] = time();
-                $sdata['last_time'] = time() - 86400;              //最新答题时间改为昨天。这样用户今天可以再答题一次。
+                $sdata['last_time'] = $userInfo['last_time']+1;              //分享成功，答题次数+1
                 
                 $res = $userMod->where('id',$userInfo->id)->update($sdata);
                 if($res){
