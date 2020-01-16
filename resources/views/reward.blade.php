@@ -23,6 +23,12 @@
         })(document, window);
     </script>
     <link rel="stylesheet" href="css/rewardPage.css">
+    <style>
+        .sbmitBtn p a{
+            color: #ffc77d;
+            font-size: .2rem;
+        }
+    </style>
 </head>
 <body>
     <div class="box">
@@ -46,7 +52,7 @@
                 </div>
                 <div class="sbmitBtn">
                     <img src="images/sbmitBtn.png" alt="" id="sbmitBtn">
-                    <p>*R网注册地址：www.rightbtc.pro</p>
+                    <p>*R网注册地址：<a href="https://www.rightbtc.pro/">www.rightbtc.pro</a></p>
                     <p>*如填写内容有误，可直接修改后再提交</p>
                     <p>*奖励将在活动结束后7个工作日内发放完毕</p>
                     <p>*从首页【最好成绩-领取奖励】可进入本界面</p>
