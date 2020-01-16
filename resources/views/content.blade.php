@@ -128,12 +128,12 @@
 </body>
 </html>
 <script src="/js/jquery.js"></script>
-<script src="/js/time_js.js"></script>
+<script src="/js/time_js.js?1111"></script>
 <script>
     var page_id = '{{$page_id}}';
     var token = $('input[name="_token"]').val();
     var selected = false;
-    var second =15;
+    var second =20;
     var time_index;
     countDown();
     time_index = setInterval("setTime()",1000);

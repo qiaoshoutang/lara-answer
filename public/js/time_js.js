@@ -13,7 +13,7 @@ MS = 0;
 totle = (MM+1)*600;
 d = 180*(MM+1);
 MM = "0" + MM;
-var gameTime = 16;
+var gameTime = 21;
 //count down
 var showTime = function(){
     totle = totle - 1;
