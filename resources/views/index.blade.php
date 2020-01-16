@@ -31,7 +31,7 @@
 <body>
     <div class="box">
         <!--规则页-->
-        <div class="rulepage" style="display: block">
+        <div class="rulepage">
             <div class="closebtn">
                 <img src="images/dacha.png" alt="" >
             </div>
