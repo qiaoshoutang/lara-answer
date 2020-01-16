@@ -25,14 +25,42 @@
     <link rel="stylesheet" href="/css/index.css">
 
 </head>
+<style>
+    .ruleAndMxTitle{
+        width: 80%;
+        position: absolute;
+        top: 1.1rem;
+        left: 10%;
+    }
+    .MxBox,.ruleBox{
+        width: 40%;
+        float: left;
+        margin-left: 6%;
+    }
+    .MxBox img,.ruleBox img{
+        width: 100%;
+    }
+</style>
 <body>
     <div class="box">
         <!--规则页-->
-        <div class="rulepage">
+        <div class="rulepage" style="display: block">
             <div class="closebtn">
                 <img src="images/dacha.png" alt="" >
             </div>
+            <div class="ruleAndMxTitle">
+                <div class="MxBox" >
+                    <img src="images/RuleDown.png" alt="" class="MxBoxDown">
+                    <img src="images/RuleUp.png" alt="" style="display: none" class="MxBoxUp">
+                </div>
+                <div class="ruleBox">
+                    <img src="images/MxDown.png" alt=""style="display: none" class="ruleBoxDown">
+                    <img src="images/MxUp.png" alt="" class="ruleBoxUp">
+                </div>
+
+            </div>
             <img src="images/rulepage.png" alt="" class="rulepageImg">
+            <img src="images/MxPage.png" alt="" class="MxPageImg" style="display: none">
         </div>
         <!--成绩单-->
         <div class="reportCard">
@@ -77,6 +105,25 @@
 <script src="js/layer/layer.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 </html>
+<script>
+    $(".MxBoxUp").click(function () {
+        $(".MxBoxUp").hide();
+        $(".ruleBoxUp").show();
+        $(".ruleBoxDown").hide();
+        $(".rulepageImg").show();
+        $(".MxPageImg").hide();
+        $(".MxBoxDown").show()
+    })
+    $(".ruleBoxUp").click(function () {
+        $(".MxBoxUp").show();
+        $(".ruleBoxUp").hide();
+        $(".ruleBoxDown").show();
+        $(this).hide();
+        $(".rulepageImg").hide();
+        $(".MxPageImg").show();
+        $(".MxBoxDown").hide()
+    })
+</script>
 <script>
 
     wx.config({

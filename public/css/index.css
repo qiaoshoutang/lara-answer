@@ -34,15 +34,16 @@ body{
     width: 85%;
     margin-top: 1rem;
 }
-.rulepageImg{
+.rulepageImg,.MxPageImg{
     width: 90%;
     margin-top: 2.2rem;
 }
 .closebtn img{
      position: absolute;
     width: 8%;
-    right: .5rem;
+    right: .3rem;
     top: 1.5rem;
+    z-index: 99;
 
 }
 .dnaLogo{
