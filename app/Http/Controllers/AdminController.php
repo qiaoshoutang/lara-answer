@@ -141,7 +141,7 @@ class AdminController extends Controller
             return $rdata;
         }
         $userMod = new User();
-        $res = $userMod->where('id',$data['id'])->update(['last_time'=>time()-86400]);
+        $res = $userMod->where('id',$data['id'])->increment('last_time');
         if($res){
             $rdata['code'] = 1;
             $rdata['info'] = '操作成功！';
