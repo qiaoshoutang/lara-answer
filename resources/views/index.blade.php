@@ -23,11 +23,7 @@
         })(document, window);
     </script>
     <link rel="stylesheet" href="/css/index.css">
-
 </head>
-<style>
-
-</style>
 <body>
     <div class="box">
         <!--规则页-->
