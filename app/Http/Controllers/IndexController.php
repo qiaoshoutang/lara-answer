@@ -228,7 +228,7 @@ class IndexController extends Controller
 
         $targetUrl = 'poster/'.$userInfo->id.'_'.$score.'.jpg';
 
-        $img = Image::make('images/mould.jpg');
+        $img = Image::make('images/mould2.jpg');
         $img ->insert($userInfo->avatar,'top-left',156,484);                   //合成头像
         $img ->insert('images/circle.png','top-left',150,474);                   //合成头像
         $img->text($userInfo->nickname, 230, 630, function($font) {            //水印昵称

@@ -22,7 +22,7 @@
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
     </script>
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/index.css?22">
 
 </head>
 <style>
@@ -31,7 +31,7 @@
 <body>
     <div class="box">
         <!--规则页-->
-        <div class="rulepage" style="display: block">
+        <div class="rulepage">
             <div class="closebtn">
                 <img src="images/dacha.png" alt="" >
             </div>
@@ -46,7 +46,7 @@
                 </div>
 
             </div>
-            <img src="images/rulepage.png" alt="" class="rulepageImg">
+            <img src="images/rulepage.png?41" alt="" class="rulepageImg">
             <img src="images/MxPage.png" alt="" class="MxPageImg" style="display: none">
         </div>
         <!--成绩单-->
@@ -79,7 +79,7 @@
         </div>
         <!--答题规则-->
         <div class="AnswerRule">
-            <img src="images/rule.png" alt="">
+            <img src="images/rule.png?55" alt="">
         </div>
         <!--开始答题-->
         <div class="BeiginBtn">
