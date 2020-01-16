@@ -26,20 +26,7 @@
 
 </head>
 <style>
-    .ruleAndMxTitle{
-        width: 80%;
-        position: absolute;
-        top: 1.1rem;
-        left: 10%;
-    }
-    .MxBox,.ruleBox{
-        width: 40%;
-        float: left;
-        margin-left: 6%;
-    }
-    .MxBox img,.ruleBox img{
-        width: 100%;
-    }
+
 </style>
 <body>
     <div class="box">
