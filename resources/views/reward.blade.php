@@ -22,7 +22,7 @@
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
     </script>
-    <link rel="stylesheet" href="css/rewardPage.css">
+    <link rel="stylesheet" href="css/rewardPage.css?33">
     <style>
         .sbmitBtn p a{
             color: #ffc77d;

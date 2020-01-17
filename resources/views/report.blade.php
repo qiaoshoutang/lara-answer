@@ -74,6 +74,22 @@
     .dachaA img{
         width: 100%;
     }
+    .bottomfont{
+        width: 100%;
+        font-size: .2rem;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        top: -.4rem;
+    }
+    .bottomfont a{
+        color:#ffc77d ;
+        display: inline-block;
+        height: .28rem;
+        line-height: .28rem;
+        border-bottom: 1px solid #ffc77d;
+        text-decoration: none;
+    }
 </style>
 <body>
     <div class="box">
@@ -108,6 +124,11 @@
                     <img src="/images/Receiveawards.png" alt="" onclick='getReward()'>
                 </li>
             </ul>
+        </div>
+
+        <!--添加地址-->
+        <div class="bottomfont">
+            <p><a href="https://dna.walletxx.net/#/active">发元界DNA红包，新年更热闹！</a></p>
         </div>
         @csrf
     </div>

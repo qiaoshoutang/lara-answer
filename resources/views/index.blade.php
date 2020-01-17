@@ -26,7 +26,22 @@
 
 </head>
 <style>
-
+.bottomfont{
+    width: 100%;
+    font-size: .2rem;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: -.4rem;
+}
+.bottomfont a{
+    color:#ffc77d ;
+    display: inline-block;
+    height: .28rem;
+    line-height: .28rem;
+    border-bottom: 1px solid #ffc77d;
+    text-decoration: none;
+}
 </style>
 <body>
     <div class="box">
@@ -84,6 +99,10 @@
         <!--开始答题-->
         <div class="BeiginBtn">
             <img src="images/btnBeigin.png" alt="" onclick='start()'>
+        </div>
+
+        <div class="bottomfont">
+            <p><a href="https://dna.walletxx.net/#/active">发元界DNA红包，新年更热闹！</a></p>
         </div>
     </div>
      @csrf
