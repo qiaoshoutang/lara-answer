@@ -22,7 +22,7 @@
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
     </script>
-    <link rel="stylesheet" href="/css/reportCard.css">
+    <link rel="stylesheet" href="/css/reportCard.css?41">
 
 </head>
 <style>

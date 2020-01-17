@@ -22,7 +22,7 @@
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
     </script>
-    <link rel="stylesheet" href="/css/index.css?22">
+    <link rel="stylesheet" href="/css/index.css?222">
 
 </head>
 <style>
@@ -89,7 +89,7 @@
         </div>
         <!--狮子logo-->
         <div class="logoCenter">
-            <img src="images/logoCenter.png" alt="">
+            <img src="images/logoCenter.png?22" alt="">
             <p>新年答题，一起瓜分百万元界DNA</p>
         </div>
         <!--答题规则-->
