@@ -28,10 +28,24 @@
             color: #ffc77d;
             font-size: .2rem;
         }
+        #bgmvideo1{
+            position: fixed;
+            top: .4rem!important;
+            right: .4rem!important;
+            height: .4rem;
+            width: .4rem;
+            left:unset;
+            background: url("/images/XlB.png")top center no-repeat;
+            background-size:100% 100% ;
+            z-index: 9999;
+            opacity: .5;
+        }
     </style>
 </head>
 <body>
-<audio src="/images/Intro.mp3" id="audio" autoplay loop></audio>
+<div id="bgmvideo1">
+    <audio src="/images/Intro.mp3" id="audio" autoplay loop></audio>
+</div>
 
     <div class="box">
         <div class="dnaLogo">
@@ -66,15 +80,8 @@
 </body>
 <script src="js/jquery.js"></script>
 <script src="js/layui/layui.js"></script>
+<script src="/js/music.js"></script>
 </html>
-<script type="text/javascript">
-
-    var audio = document.getElementById("audio");
-    document.ontouchend = function() {
-        audio.play()
-    }
-
-</script>
 <script>
     layui.use('layer', function(){  //layer弹框
         var layer = layui.layer;
