@@ -31,6 +31,8 @@
     </style>
 </head>
 <body>
+<audio src="/images/Intro.mp3" id="audio" autoplay loop></audio>
+
     <div class="box">
         <div class="dnaLogo">
             <img src="images/DNA.png" alt="">
@@ -65,14 +67,18 @@
 <script src="js/jquery.js"></script>
 <script src="js/layui/layui.js"></script>
 </html>
+<script type="text/javascript">
 
+    var audio = document.getElementById("audio");
+    document.ontouchend = function() {
+        audio.play()
+    }
+
+</script>
 <script>
-
     layui.use('layer', function(){  //layer弹框
         var layer = layui.layer;
     });
-
-
 
 
     $("#sbmitBtn").click(function () {

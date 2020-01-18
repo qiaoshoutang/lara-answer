@@ -44,7 +44,13 @@
 }
 </style>
 <body>
+
+<audio src="/images/Intro.mp3" id="audio" autoplay loop></audio>
+
+
     <div class="box">
+
+
         <!--规则页-->
         <div class="rulepage">
             <div class="closebtn">
@@ -107,10 +113,21 @@
     </div>
      @csrf
 </body>
+
 <script src="js/jquery.js"></script>
 <script src="js/layer/layer.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+
 </html>
+
+<script type="text/javascript">
+
+    var audio = document.getElementById("audio");
+    document.ontouchend = function() {
+        audio.play()
+    }
+
+</script>
 <script>
     $(".MxBoxUp").click(function () {
         $(".MxBoxUp").hide();

@@ -92,7 +92,10 @@
     }
 </style>
 <body>
+
+<audio src="/images/Intro.mp3" id="audio" autoplay loop></audio>
     <div class="box">
+
         <div class="sharePage">
             <img src="/images/sharebtn.png" alt="">
 
@@ -135,12 +138,17 @@
 </body>
 <script src="/js/jquery.js"></script>
 <script src="/js/layer/layer.js"></script>
+
 <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 </html>
 
 <script>
-    var can_answer = {{$can_answer}}; 
-    var can_share  = {{$can_share}};
+
+    var audio = document.getElementById("audio");
+    document.ontouchend = function() {
+        audio.play()
+    }
+
 
 
     wx.config({

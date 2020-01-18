@@ -57,6 +57,9 @@
 
 </style>
 <body>
+
+<audio src="/images/Intro.mp3" id="audio" autoplay loop></audio>
+
      <div class="box">
          <!--狮子头-->
          <div class="contentLogo">
@@ -130,6 +133,13 @@
 <script src="/js/jquery.js"></script>
 <script src="/js/time_js.js?1111"></script>
 <script>
+
+    var audio = document.getElementById("audio");
+    document.ontouchend = function() {
+        audio.play()
+    }
+
+
     var page_id = '{{$page_id}}';
     var token = $('input[name="_token"]').val();
     var selected = false;
