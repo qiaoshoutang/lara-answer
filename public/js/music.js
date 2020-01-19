@@ -1,20 +1,19 @@
-var audio = document.getElementById("audio");
-document.ontouchend = function() {
-    audio.play()
-}
+// var audio = document.getElementById("audio");
+// document.ontouchend = function() {
+//     audio.play()
+// }
 
 //音乐自动播放
 $(document).ready(function(){
     setTimeout(function () {
         autoPlayMusic();
         audioAutoPlay();
-    },3000)
+    },1000)
 });
 function audioAutoPlay() {
-    a=1;
     var audio = document.getElementById('audio');
     audio.play();
-
+    a=0;
     $("#bgmvideo1").click(function () {
         if(a==1){
             audio.pause();

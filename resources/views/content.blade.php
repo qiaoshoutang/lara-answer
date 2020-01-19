@@ -61,7 +61,7 @@
         height: .4rem;
         width: .4rem;
         left:unset;
-        background: url("/images/XlB.png")top center no-repeat;
+        background: url("/images/unXlB.png")top center no-repeat;
         background-size:100% 100% ;
         z-index: 9999;
         opacity: .5;
@@ -146,7 +146,7 @@
 </html>
 <script src="/js/jquery.js"></script>
 <script src="/js/time_js.js?1111"></script>
-<script src="/js/music.js"></script>
+<script src="/js/music.js?22"></script>
 <script>
 
     var page_id = '{{$page_id}}';

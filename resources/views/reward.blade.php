@@ -35,7 +35,7 @@
             height: .4rem;
             width: .4rem;
             left:unset;
-            background: url("/images/XlB.png")top center no-repeat;
+            background: url("/images/unXlB.png")top center no-repeat;
             background-size:100% 100% ;
             z-index: 9999;
             opacity: .5;
@@ -80,7 +80,7 @@
 </body>
 <script src="js/jquery.js"></script>
 <script src="js/layui/layui.js"></script>
-<script src="/js/music.js"></script>
+<script src="/js/music.js?22"></script>
 </html>
 <script>
     layui.use('layer', function(){  //layer弹框

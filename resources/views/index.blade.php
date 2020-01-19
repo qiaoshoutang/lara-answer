@@ -49,7 +49,7 @@
     height: .4rem;
     width: .4rem;
     left:unset;
-    background: url("/images/XlB.png")top center no-repeat;
+    background: url("/images/unXlB.png")top center no-repeat;
     background-size:100% 100% ;
     z-index: 9999;
     opacity: .5;
@@ -130,7 +130,7 @@
 
 <script src="js/jquery.js"></script>
 <script src="js/layer/layer.js"></script>
-<script src="/js/music.js"></script>
+<script src="/js/music.js?22"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 </html>
 
