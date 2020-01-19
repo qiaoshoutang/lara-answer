@@ -22,14 +22,49 @@
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
     </script>
-    <link rel="stylesheet" href="/css/index.css?22">
+    <link rel="stylesheet" href="/css/index.css?222">
 
 </head>
 <style>
-
+.bottomfont{
+    width: 100%;
+    font-size: .2rem;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: -.4rem;
+}
+.bottomfont a{
+    color:#ffc77d ;
+    display: inline-block;
+    height: .28rem;
+    line-height: .28rem;
+    border-bottom: 1px solid #ffc77d;
+    text-decoration: none;
+}
+#bgmvideo1{
+    position: fixed;
+    top: .4rem!important;
+    right: .4rem!important;
+    height: .4rem;
+    width: .4rem;
+    left:unset;
+    background: url("/images/XlB.png")top center no-repeat;
+    background-size:100% 100% ;
+    z-index: 9999;
+    opacity: .5;
+}
 </style>
 <body>
+<div id="bgmvideo1">
+    <audio src="/images/Intro.mp3" id="audio" autoplay loop></audio>
+</div>
+
+
+
     <div class="box">
+
+
         <!--规则页-->
         <div class="rulepage">
             <div class="closebtn">
@@ -74,7 +109,7 @@
         </div>
         <!--狮子logo-->
         <div class="logoCenter">
-            <img src="images/logoCenter.png" alt="">
+            <img src="images/logoCenter.png?22" alt="">
             <p>新年答题，一起瓜分百万元界DNA</p>
         </div>
         <!--答题规则-->
@@ -85,13 +120,20 @@
         <div class="BeiginBtn">
             <img src="images/btnBeigin.png" alt="" onclick='start()'>
         </div>
+
+        <div class="bottomfont">
+            <p><a href="https://dna.walletxx.net/#/active">发元界DNA红包，新年更热闹！</a></p>
+        </div>
     </div>
      @csrf
 </body>
+
 <script src="js/jquery.js"></script>
 <script src="js/layer/layer.js"></script>
+<script src="/js/music.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 </html>
+
 <script>
     $(".MxBoxUp").click(function () {
         $(".MxBoxUp").hide();

@@ -22,15 +22,31 @@
             doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
     </script>
-    <link rel="stylesheet" href="css/rewardPage.css">
+    <link rel="stylesheet" href="css/rewardPage.css?333">
     <style>
         .sbmitBtn p a{
             color: #ffc77d;
             font-size: .2rem;
         }
+        #bgmvideo1{
+            position: fixed;
+            top: .4rem!important;
+            right: .4rem!important;
+            height: .4rem;
+            width: .4rem;
+            left:unset;
+            background: url("/images/XlB.png")top center no-repeat;
+            background-size:100% 100% ;
+            z-index: 9999;
+            opacity: .5;
+        }
     </style>
 </head>
 <body>
+<div id="bgmvideo1">
+    <audio src="/images/Intro.mp3" id="audio" autoplay loop></audio>
+</div>
+
     <div class="box">
         <div class="dnaLogo">
             <img src="images/DNA.png" alt="">
@@ -64,15 +80,12 @@
 </body>
 <script src="js/jquery.js"></script>
 <script src="js/layui/layui.js"></script>
+<script src="/js/music.js"></script>
 </html>
-
 <script>
-
     layui.use('layer', function(){  //layer弹框
         var layer = layui.layer;
     });
-
-
 
 
     $("#sbmitBtn").click(function () {

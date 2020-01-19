@@ -121,7 +121,7 @@ body{
 .chengji{
     margin-top: .2rem;
 }
-@media screen and (min-height:750px){
+@media screen and (min-height:800px){
     .box{
         background: url("../images/BgRed.png")no-repeat center;
         background-size:100% 100%;
